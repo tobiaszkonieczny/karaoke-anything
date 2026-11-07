@@ -1,0 +1,12 @@
+services:
+  separator:
+    build: ./separator
+    restart: unless-stopped
+    volumes:
+      - spleeter-models:/models
+    # Local testing only
+    ports:
+      - "127.0.0.1:8000:8000"
+
+volumes:
+  spleeter-models:
