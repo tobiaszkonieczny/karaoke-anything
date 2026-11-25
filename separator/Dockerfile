@@ -5,6 +5,9 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends ffmpeg libsndfile1 \
     && rm -rf /var/lib/apt/lists/*
 
+# yt-dlp needs a JavaScript runtime to extract YouTube formats
+COPY --from=denoland/deno:bin-2.5.6 /deno /usr/local/bin/deno
+
 WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt

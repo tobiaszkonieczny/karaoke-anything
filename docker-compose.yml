@@ -2,6 +2,8 @@ services:
   separator:
     build: ./separator
     restart: unless-stopped
+    # If memory ever runs out, only this container is killed instead of random host processes
+    mem_limit: 6g
     volumes:
       - spleeter-models:/models
     # Local testing only
